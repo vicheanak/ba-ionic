@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.sellerprogram829991" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>UniBook</name>
+<widget id="com.unibookkh.sf" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>SF UniBook</name>
     <description>A mini accounting book keeping project for Unilever's sellers to record their sale daily.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Vicheanak Vannavy - 0969269999</author>
+    <author email="vicheanak@gmail.com" href="http://vicheanak.com/">Vicheanak Vannavy - 0969269999</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
