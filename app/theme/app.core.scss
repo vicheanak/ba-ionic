@@ -1,231 +1,91 @@
-// http://ionicframework.com/docs/v2/theming/
-
-
-// App Shared Imports
-// --------------------------------------------------
-// These are the imports which make up the design of this app.
-// By default each design mode includes these shared imports.
-// App Shared Sass variables belong in app.variables.scss.
-
-@import "../pages/daily/daily.scss";
-
-@import "../pages/weekly/weekly.scss";
-
-@import "../pages/monthly/monthly.scss";
-
-@import "../pages/insert/insert.scss";
-
-@import "../pages/edit/edit.scss";
-
-@import "../pages/login/login.scss";
-
-@import "../pages/daily-report/daily-report.scss";
-
-@import "../pages/setting/setting.scss";
-
-ion-title, ion-label, ion-input, button, h1, h2, p, ion-card-header, div{
-    font-family: "battambang"
+@font-face {
+  font-family: 'Battambang';
+  src: url('../fonts/battambang.ttf');
 }
 
-.en{
-    font-family: 'Arial'
+@import "../pages/news/news";
+
+ion-avatar[item-left], ion-thumbnail[item-left]{
+  width: 100px;
+  height: 100px;
+  display: flex;
 }
 
-ion-modal {
-    .modal-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
+ion-thumbnail img{
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
 }
 
-#escapingBallG{
-	position:relative;
-	width:125px;
-	height:43px;
-	margin:auto;
+.item{
+  align-items: flex-start;
 }
 
-.escapingBallG{
-	background-color:rgb(0,150,136);
-	position:absolute;
-	top:0;
-	left:0;
-	width:43px;
-	height:43px;
-	border-radius:21px;
-		-o-border-radius:21px;
-		-ms-border-radius:21px;
-		-webkit-border-radius:21px;
-		-moz-border-radius:21px;
-	animation-name:bounce_escapingBallG;
-		-o-animation-name:bounce_escapingBallG;
-		-ms-animation-name:bounce_escapingBallG;
-		-webkit-animation-name:bounce_escapingBallG;
-		-moz-animation-name:bounce_escapingBallG;
-	animation-duration:1.5s;
-		-o-animation-duration:1.5s;
-		-ms-animation-duration:1.5s;
-		-webkit-animation-duration:1.5s;
-		-moz-animation-duration:1.5s;
-	animation-iteration-count:infinite;
-		-o-animation-iteration-count:infinite;
-		-ms-animation-iteration-count:infinite;
-		-webkit-animation-iteration-count:infinite;
-		-moz-animation-iteration-count:infinite;
-	animation-timing-function:linear;
-		-o-animation-timing-function:linear;
-		-ms-animation-timing-function:linear;
-		-webkit-animation-timing-function:linear;
-		-moz-animation-timing-function:linear;
-	animation-delay:0s;
-		-o-animation-delay:0s;
-		-ms-animation-delay:0s;
-		-webkit-animation-delay:0s;
-		-moz-animation-delay:0s;
-	transform:scale(0.5, 1);
-		-o-transform:scale(0.5, 1);
-		-ms-transform:scale(0.5, 1);
-		-webkit-transform:scale(0.5, 1);
-		-moz-transform:scale(0.5, 1);
+ion-label{
+ overflow: visible;
+ white-space: normal;
+}
+
+.item .item-inner{
+ padding-right: 0px;
+}
+
+.toolbar-title{
+  font-family: Battambang;
+}
+
+ion-label{
+  font-family: Battambang;
+}
+
+.article-description{
+  padding: 0px 10px;
+}
+
+p.posted_date {
+  color: grey;
+  font-size: 70%;
+}
+
+.detail-description{
+ font-family: Battambang;
 }
 
 
-
-@keyframes bounce_escapingBallG{
-	0%{
-		left:0px;
-		transform:scale(0.5, 1);
-	}
-
-	25%{
-		left:41px;
-		transform:scale(1, 0.5);
-	}
-
-	50%{
-		left:103px;
-		transform:scale(0.5, 1);
-	}
-
-	75%{
-		left:41px;
-		transform:scale(1, 0.5);
-	}
-
-	100%{
-		left:0px;
-		transform:scale(0.5, 1);
-	}
+h1.detail-title{
+  font-family: Battambang;
+  font-size: 130%;
 }
 
-@-o-keyframes bounce_escapingBallG{
-	0%{
-		left:0px;
-		-o-transform:scale(0.5, 1);
-	}
-
-	25%{
-		left:41px;
-		-o-transform:scale(1, 0.5);
-	}
-
-	50%{
-		left:103px;
-		-o-transform:scale(0.5, 1);
-	}
-
-	75%{
-		left:41px;
-		-o-transform:scale(1, 0.5);
-	}
-
-	100%{
-		left:0px;
-		-o-transform:scale(0.5, 1);
-	}
+h2.title{
+ font-size: 92%;
+ font-family: Battambang;
+ line-height: 25px;
+ color: #092961;
 }
 
-@-ms-keyframes bounce_escapingBallG{
-	0%{
-		left:0px;
-		-ms-transform:scale(0.5, 1);
-	}
-
-	25%{
-		left:41px;
-		-ms-transform:scale(1, 0.5);
-	}
-
-	50%{
-		left:103px;
-		-ms-transform:scale(0.5, 1);
-	}
-
-	75%{
-		left:41px;
-		-ms-transform:scale(1, 0.5);
-	}
-
-	100%{
-		left:0px;
-		-ms-transform:scale(0.5, 1);
-	}
+ion-list .item .item-inner{
+  border-bottom: 1px solid #f5f5f5;
 }
 
-@-webkit-keyframes bounce_escapingBallG{
-	0%{
-		left:0px;
-		-webkit-transform:scale(0.5, 1);
-	}
-
-	25%{
-		left:41px;
-		-webkit-transform:scale(1, 0.5);
-	}
-
-	50%{
-		left:103px;
-		-webkit-transform:scale(0.5, 1);
-	}
-
-	75%{
-		left:41px;
-		-webkit-transform:scale(1, 0.5);
-	}
-
-	100%{
-		left:0px;
-		-webkit-transform:scale(0.5, 1);
-	}
+span.note {
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+  font-size: 70%;
+  color: gray;
 }
 
-@-moz-keyframes bounce_escapingBallG{
-	0%{
-		left:0px;
-		-moz-transform:scale(0.5, 1);
-	}
-
-	25%{
-		left:41px;
-		-moz-transform:scale(1, 0.5);
-	}
-
-	50%{
-		left:103px;
-		-moz-transform:scale(0.5, 1);
-	}
-
-	75%{
-		left:41px;
-		-moz-transform:scale(1, 0.5);
-	}
-
-	100%{
-		left:0px;
-		-moz-transform:scale(0.5, 1);
-	}
+span.source{
+ position: absolute;
+ left: 105px;
+ bottom: 0px;
+ font-size: 70%;
+ color: gray;
 }
+
+.battambang{
+  font-family: Battambang;
+}
+
+

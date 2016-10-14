@@ -1,0 +1,24 @@
+<ion-menu [content]="content">
+
+  <ion-toolbar>
+    <ion-title>KhmerGoo</ion-title>
+</ion-toolbar>
+
+<ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+    </button>
+    <button menuClose ion-item [style.color]="updateColor" (click)="updateApp()">
+       {{updateText}}
+   </button>
+   <ion-item>
+       Version 1.4
+   </ion-item>
+</ion-list>
+</ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

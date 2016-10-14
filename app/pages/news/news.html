@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title class="title">{{title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="news">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content class="battambang"
+        pullingIcon="arrow-dropdown"
+        pullingText="ទាញយកទិន្ន័យ"
+        refreshingSpinner="circles"
+        refreshingText="ដោនឡូត...">
+    </ion-refresher-content>
+</ion-refresher>
+<ion-list *ngIf="newsData.length" class="news-list">
+    <ion-item *ngFor="let news of newsData" class="item no-padding item-text-wrap" (click)="goDetail(news.url)">
+        <ion-thumbnail item-left class="imageContainer">
+            <div class="imageCenterer">
+                <img src="{{news.imageUrl}}" />
+            </div>
+        </ion-thumbnail>
+        <h2 class="title">{{news.name}}</h2>
+        <span class="source">
+            {{news.Website.name}}
+        </span>
+        <span class="note">
+            {{news.postedDate}}
+        </span>
+    </ion-item>
+</ion-list>
+
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</ion-content>

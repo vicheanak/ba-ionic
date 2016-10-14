@@ -1,57 +1,86 @@
-import {Component} from '@angular/core';
-import {Platform, ionicBootstrap} from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {Platform, ionicBootstrap, Nav, LoadingController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {TabsPage} from './pages/tabs/tabs';
-import {LoginPage} from './pages/login/login';
-import {Env} from './providers/env/env';
-import {UserData} from './providers/user-data/user-data';
-import {DailyReportPage} from './pages/daily-report/daily-report';
-import {MonthlyPage} from './pages/monthly/monthly';
-import {SettingPage} from './pages/setting/setting';
-import {RootNav} from './providers/root-nav/root-nav'
 import {provideCloud, CloudSettings} from '@ionic/cloud-angular';
 import {Deploy} from '@ionic/cloud-angular';
+import { NewsPage } from './pages/news/news';
+
 
 const cloudSettings: CloudSettings = {
-  'core': {
-    'app_id': '7c39aa66'
-  }
+    'core': {
+        'app_id': 'd81351b8'
+    }
 };
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>',
-  providers: [Env, UserData, RootNav]
+    templateUrl: 'build/app.html'
 })
 export class MyApp {
+    pages: any;
+    @ViewChild(Nav) nav: Nav;
+    rootPage: any = NewsPage;
+    snapshotAvailable: boolean = false;
+    updateStatus: any;
+    loading: boolean;
+    updateColor: any = 'green';
+    updateText: any = "You're Up to Date";
 
-  private rootPage: any;
+    constructor(private platform: Platform, private deploy: Deploy, public loadingCtrl: LoadingController) {
+        this.pages = [
+        {name: '', title: 'ពត៌មានជាតិ', component: NewsPage },
+        { name: 'kohsantepheap', title: 'កោះសន្តិភាព', component: NewsPage },
+        { name: 'rfa', title: 'អាសុីសេរី', component: NewsPage },
+        { name: 'voa', title: 'វីអូអេ', component: NewsPage },
+        { name: 'thmeythmey', title: 'ថ្មីថ្មី', component: NewsPage },
+        { name: 'freshnews', title: 'Fresh News', component: NewsPage },
+        { name: 'dapnews', title: 'ដើមអម្ពិល', component: NewsPage },
+        ];
 
-  constructor(private platform: Platform, private userData: UserData) {
-    this.userData.getUser().then((user:any) => {
-        if (user){
-            this.rootPage = TabsPage;
-            // this.rootPage = SettingPage;
+        this.deploy.check().then((snapshotAvailable) => {
+            this.snapshotAvailable = snapshotAvailable;
+            if (this.snapshotAvailable){
+                this.updateText = 'New Update is Available!';
+                this.updateColor = 'red';
+            }
+            else{
+                this.updateText = "You're Up to Date!";
+                this.updateColor = 'green';
+            }
+        });
+
+        platform.ready().then(() => {
+            StatusBar.styleDefault();
+            (<any>window).analytics.startTrackerWithId("UA-85523544-1");
+        });
+    }
+
+    openPage(page) {
+        // (<any>window).trackEvent("Website", "Get", "Website", 25);
+        this.nav.setRoot(page.component, {
+            website: page.name,
+            websiteKh: page.title
+        });
+    }
+
+    updateApp(){
+        // (<any>window).trackEvent("Update", "Post", "Update", 25);
+        if (this.snapshotAvailable){
+            let loader = this.loadingCtrl.create({
+                content: "កំពុងទាញយកទិន្ន័យ..."
+            });
+            loader.present();
+            this.deploy.download().then(() => {
+                this.deploy.extract().then(() => {
+                    return this.deploy.load();
+                });
+            });
         }
-        else{
-            this.rootPage = LoginPage;
-        }
-    });
-
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-    });
-  }
+    }
 }
 
 ionicBootstrap(MyApp, [
-        Env, 
-        UserData,
-        RootNav,
-        Deploy,
-        provideCloud(cloudSettings)
-], {
-    tabSubPages: false,
-    tabsHighlight: true
-});
+    Deploy,
+    provideCloud(cloudSettings)
+    ], {
+        backButtonText: '',
+    });
