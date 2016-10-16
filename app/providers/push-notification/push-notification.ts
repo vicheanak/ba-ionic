@@ -10,8 +10,8 @@ export class PushNotification {
   host: any;
 
   constructor(private http: Http) {
-    this.host = 'http://192.168.8.101:3000';
-    // this.host = 'https://khmergoo.com/api';
+    // this.host = 'http://192.168.8.101:3000';
+    this.host = 'https://khmergoo.com';
   }
 
   insert(deviceToken) {

@@ -7,6 +7,7 @@ import { NewsPage } from './pages/news/news';
 import {PushNotification} from './providers/push-notification/push-notification';
 
 
+
 const cloudSettings: CloudSettings = {
     'core': {
         'app_id': 'd81351b8'
@@ -34,8 +35,13 @@ export class MyApp {
         { name: 'rfa', title: 'អាសុីសេរី', component: NewsPage },
         { name: 'voa', title: 'វីអូអេ', component: NewsPage },
         { name: 'thmeythmey', title: 'ថ្មីថ្មី', component: NewsPage },
-        { name: 'freshnews', title: 'Fresh News', component: NewsPage },
+        { name: 'phnompenhpost', title: 'ភ្នំពេញ ប៉ុស្តិ', component: NewsPage },
         { name: 'dapnews', title: 'ដើមអម្ពិល', component: NewsPage },
+        { name: 'kampucheathmey', title: 'កម្ពុជាថ្មី', component: NewsPage },
+        { name: 'freshnews', title: 'Fresh News', component: NewsPage },
+        { name: 'cen', title: 'CEN', component: NewsPage },
+        { name: 'vod', title: 'VOD', component: NewsPage },
+        { name: 'camnews', title: 'CamNews', component: NewsPage },
         ];
 
         this.deploy.check().then((snapshotAvailable) => {
@@ -53,9 +59,13 @@ export class MyApp {
         platform.ready().then(() => {
             StatusBar.styleDefault();
             Splashscreen.hide();
+
+
+
+            //Push Notification
             let push = Push.init({
                 android: {
-                    senderID: "958415907949"
+                    senderID: "460703149408"
                 },
                 ios: {
                     alert: "true",
@@ -73,7 +83,7 @@ export class MyApp {
                 let self = this;
                 if (data.additionalData.foreground) {
                     let confirmAlert = this.alertCtrl.create({
-                        title: 'New Notification',
+                        title: "New update is available",
                         message: data.message,
                         buttons: [{
                             text: 'បិទ',
@@ -81,21 +91,21 @@ export class MyApp {
                         }, {
                             text: 'យល់ព្រម',
                             handler: () => {
-                                self.nav.setRoot(NewsPage);
-                                // this.updateApp();
+                                // self.nav.setRoot(NewsPage);
+                                this.updateApp();
                             }
                         }]
                     });
                     confirmAlert.present();
                 } else {
-                    self.nav.setRoot(NewsPage);
-                    // self.updateApp();
+                    // self.nav.setRoot(NewsPage);
+                    self.updateApp();
                 }
             });
             push.on('error', (e) => {
                 console.log(e.message);
             });
-            (<any>window).analytics.startTrackerWithId("UA-85523544-1");
+            (<any>window).analytics.startTrackerWithId("UA-85758513-1");
         });
     }
 
