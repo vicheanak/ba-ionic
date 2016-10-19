@@ -1,9 +1,10 @@
 @font-face {
   font-family: 'Battambang';
-  src: url('../fonts/battambang.ttf');
+  src: url('../fonts/battambang.ttf', '../fonts/helvetica');
 }
 
 @import "../pages/news/news";
+@import "../pages/detail/detail";
 
 ion-avatar[item-left], ion-thumbnail[item-left]{
   width: 100px;

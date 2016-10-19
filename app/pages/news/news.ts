@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Platform, NavController, NavParams } from 'ionic-angular';
 import {News} from '../../providers/news/news';
 declare var AdMob: any;
+import {DetailPage} from '../detail/detail';
 
 @Component({
     templateUrl: 'build/pages/news/news.html',
@@ -73,8 +74,9 @@ export class NewsPage {
         });
     }
 
-    goDetail(url){
-        open(url, "_blank", "location=no");
+    goDetail(id){
+        this.navCtrl.push(DetailPage, {id: id});
+        // open(url, "_blank", "location=no");
     }
 
 }

@@ -17,7 +17,7 @@
     </ion-refresher-content>
 </ion-refresher>
 <ion-list *ngIf="newsData.length" class="news-list">
-    <ion-item *ngFor="let news of newsData" class="item no-padding item-text-wrap" (click)="goDetail(news.url)">
+    <ion-item *ngFor="let news of newsData" class="item no-padding item-text-wrap" (click)="goDetail(news.id)">
         <ion-thumbnail item-left class="imageContainer">
             <div class="imageCenterer">
                 <img src="{{news.imageUrl}}" />

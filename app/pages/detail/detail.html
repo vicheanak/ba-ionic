@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="result">{{result.websiteName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="detail">
+    <ion-item *ngIf="result">
+    <h2 class="title">{{result.name}}</h2>
+    <p>{{result.postedDate}}</p>
+    <div class="html-description" [innerHTML]="result.htmlcontent">
+    </div>
+    <p class="html-source" (click)="openLink(result.url)">
+        អត្ថបទនេះដកស្រង់ពី {{result.websiteName}}
+    </p>
+  </ion-item>
+</ion-content>
